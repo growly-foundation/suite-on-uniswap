@@ -40,6 +40,7 @@ import { isDevEnv, isTestEnv } from 'utilities/src/environment/env'
 import { isBrowserRouterEnabled } from 'utils/env'
 import { unregister as unregisterServiceWorker } from 'utils/serviceWorker'
 import { getCanonicalUrl } from 'utils/urlRoutes'
+import { SuiteProviderWrapper } from 'suite'
 
 if (window.ethereum) {
   window.ethereum.autoRefreshOnNetworkChange = false
@@ -161,8 +162,10 @@ createRoot(container).render(
                                   <ThemeProvider>
                                     <TamaguiProvider>
                                       <PortalProvider>
-                                        <ThemedGlobalStyle />
-                                        <App />
+                                        <SuiteProviderWrapper>
+                                          <ThemedGlobalStyle />
+                                          <App />
+                                        </SuiteProviderWrapper>
                                       </PortalProvider>
                                     </TamaguiProvider>
                                   </ThemeProvider>
